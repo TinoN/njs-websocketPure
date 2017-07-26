@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WebSockets - Simple chat</title>
+
+    </head>
+    <body>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">MDN Websocket API</a>
+        <script>
+            // if user is running mozilla then use it's built-in WebSocket
+            window.WebSocket = window.WebSocket || window.MozWebSocket;
+
+            var connection = new WebSocket('ws://127.0.0.1:3000');
+
+            connection.onopen = function () {
+                connection.send('hello');
+            };               
+
+            connection.onerror = function (error) {
+               
+            };
+
+            connection.onmessage = function (message) {
+                connection.send('antworten');
+                // connection.close();
+            };
+
+            connection.onclose = function(event) {
+
+            };
+
+
+        </script>
+    </body>
+</html>
